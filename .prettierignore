@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+pnpm-lock.yaml
+package-lock.json
+.env
+.env.local
+.gitignore
+.prettierignore
+eslint.config.js
