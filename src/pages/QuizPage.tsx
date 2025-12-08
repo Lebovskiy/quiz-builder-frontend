@@ -45,22 +45,23 @@ export default function QuizPage() {
           Quiz list
         </Text>
         <Group style={{ cursor: 'pointer' }} w="100%" justify="start" wrap="wrap">
-          {data?.map((item: QuizType) => (
-            <Card
-              onClick={() => {
-                navigate('/quiz/' + item.id + '/take');
-              }}
-              key={item.id}
-              shadow="sm"
-              p="lg"
-              w="30%"
-              radius="md"
-              withBorder
-            >
-              <Text>{item.title}</Text>
-              <Text> Question count: {item.questions ? item.questions.length : 0}</Text>
-            </Card>
-          ))}
+          {Array.isArray(data) &&
+            data?.map((item: QuizType) => (
+              <Card
+                onClick={() => {
+                  navigate('/quiz/' + item.id + '/take');
+                }}
+                key={item.id}
+                shadow="sm"
+                p="lg"
+                w="30%"
+                radius="md"
+                withBorder
+              >
+                <Text>{item.title}</Text>
+                <Text> Question count: {item.questions ? item.questions.length : 0}</Text>
+              </Card>
+            ))}
         </Group>
 
         {data.length === 0 && (
