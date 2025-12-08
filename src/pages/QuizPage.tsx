@@ -11,7 +11,7 @@ type QuizType = {
 };
 
 export default function QuizPage() {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ['quiz'],
     queryFn: async () => {
       const res = await axios.get(`${import.meta.env.VITE_API_URL}/quiz/findAll`);
@@ -30,6 +30,14 @@ export default function QuizPage() {
       />
     );
 
+  if (isError) {
+    return (
+      <Group w={1200} m="0 auto" pt={100}>
+        Oops... something went wrong
+      </Group>
+    );
+  }
+
   return (
     <DefaultLayout>
       <Group w={1200} m="0 auto" pt={100}>
@@ -37,7 +45,7 @@ export default function QuizPage() {
           Quiz list
         </Text>
         <Group style={{ cursor: 'pointer' }} w="100%" justify="start" wrap="wrap">
-          {data.map((item: QuizType) => (
+          {data?.map((item: QuizType) => (
             <Card
               onClick={() => {
                 navigate('/quiz/' + item.id + '/take');
