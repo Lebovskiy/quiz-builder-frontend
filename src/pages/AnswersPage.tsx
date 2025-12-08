@@ -35,7 +35,7 @@ export default function AnswersPage() {
   return (
     <DefaultLayout>
       <Group w={1200} m="0 auto" justify="center" pt={100}>
-        <Title>Answers for quiz: </Title>
+        <Title>Answers list for quiz: </Title>
         <AnswersList answers={data} />
       </Group>
     </DefaultLayout>
