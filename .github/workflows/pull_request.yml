@@ -1,0 +1,16 @@
+name: Print Pull Request Info
+on:
+  workflow_dispatch:
+jobs:
+  print-pr-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Pull Request Info
+        run: |
+          echo "Pull Request Number: ${{ github.event.pull_request.number }}"
+          echo "Pull Request Title: ${{ github.event.pull_request.title }}"
+          echo "Pull Request Body: ${{ github.event.pull_request.body }}"
+          echo "Pull Request Author: ${{ github.event.pull_request.user.login }}"
+          echo "Pull Request Created At: ${{ github.event.pull_request.created_at }}"
+          echo "Pull Request URL: ${{ github.event.pull_request.html_url }}" 
+          echo "${{ toJson(github.event) }}"
